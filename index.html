@@ -1,7 +1,11 @@
 <!doctype html>
 <title>introduction</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- web app capable meta tags for testing -->
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
 <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="lib/fullPage/jquery.fullPage.css" />
 <style>
@@ -27,6 +31,15 @@
         background-color: #1bbc9b;
         font-size: 300px;
     }
+
+    #page4 {
+        background-image: url('img/bg.jpg');
+    }
+
+    #move_back {
+        width: 80%;
+        height: 40%;
+    }
 </style>
 
 <script src="lib/jquery.min.js"></script>
@@ -50,14 +63,33 @@
     <i class="fa fa-smile-o"></i>
 </div>
 
+<div id="page4">
+    <button id="move_back">Move a slide back!</button>
+</div>
+
 <script>
+    var intro = undefined;
+
     $(document).ready(function() {
-        var intro = Introduction.create("#intro");
+        intro = Introduction.create("#intro");
+
+        intro.registerOnSlideEnterListener(function(index, anchor) {
+            console.log("on enter: " + index);
+        });
+
+        intro.registerOnSlideLeaveListener(function(index, direction) {
+            console.log("on leave: " + index + ", direction: " + direction);
+        });
 
         intro.addPage("#page1");
         intro.addPage("#page2");
         intro.addPage("#page3");
+        intro.addPage("#page4");
 
         intro.init();
+    });
+
+    $("#move_back").click(function() {
+        intro.previous();
     });
 </script>
