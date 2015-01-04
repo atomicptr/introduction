@@ -39,10 +39,9 @@
 <div class="content">
     <div id="slides">
         <img src="http://placehold.it/1080x1920">
-        <img src="http://placebear.com/1080/1920">
-        <img src="http://placehold.it/1080x1920">
-        <img src="http://placebear.com/1080/1920">
-        <img src="http://placehold.it/1080x1920">
+        <div>
+            <h1> Testa</h1>
+        </div>
         <img src="http://placebear.com/1080/1920">
     </div>
 </div>
@@ -56,8 +55,7 @@
         $("#nav-" + num).removeClass("fa-circle-o").addClass("fa-circle");
     }
 
-    $(document).ready(function() {
-
+    function init_intro() {
         var width = $(window).width();
         var height = $(window).height();
 
@@ -90,5 +88,9 @@
                 }
             }
         });
+    }
+
+    $(document).ready(function() {
+        init_intro();
     });
 </script>
