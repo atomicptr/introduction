@@ -14,6 +14,26 @@
     #slides {
         display: none;
     }
+
+    .slidesjs-pagination {
+        list-style-type: none;
+        float: left;
+
+        padding: 0;
+        margin: 0;
+
+        position: absolute;
+
+        bottom: 5%;
+
+        z-index: 10;
+    }
+
+    .slidesjs-pagination-item {
+        display: inline;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 </style>
 
 <div class="content">
@@ -30,6 +50,12 @@
 <script src="lib/jquery.min.js"></script>
 <script src="lib/jquery.slides.min.js"></script>
 <script>
+    function set_bullet(num) {
+        $(".fa-circle").addClass("fa-circle-o").removeClass("fa-circle");
+
+        $("#nav-" + num).removeClass("fa-circle-o").addClass("fa-circle");
+    }
+
     $(document).ready(function() {
 
         var width = $(window).width();
@@ -40,11 +66,28 @@
             height: height,
 
             pagination: {
-                active: false
+                active: true
             },
 
             navigation: {
                 active: false
+            },
+
+            callback: {
+                loaded: function(number) {
+                    $('.slidesjs-pagination').css("left",
+                        (width / 2 - $('.slidesjs-pagination').width() / 2) + "px");
+
+                    $('.slidesjs-pagination-item').each(function(index, element) {
+                        $(this).html("<i id='" + "nav-" + (index + 1) + "' class='fa fa-circle-o'></i>");
+                    });
+
+                    set_bullet(number);
+                },
+
+                complete: function(number) {
+                    set_bullet(number);
+                }
             }
         });
     });
