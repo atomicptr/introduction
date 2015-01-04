@@ -1,0 +1,51 @@
+<!doctype html>
+<title>introduction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    #slides {
+        display: none;
+    }
+</style>
+
+<div class="content">
+    <div id="slides">
+        <img src="http://placehold.it/1080x1920">
+        <img src="http://placebear.com/1080/1920">
+        <img src="http://placehold.it/1080x1920">
+        <img src="http://placebear.com/1080/1920">
+        <img src="http://placehold.it/1080x1920">
+        <img src="http://placebear.com/1080/1920">
+    </div>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/jquery.slides.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var width = $(window).width();
+        var height = $(window).height();
+
+        $("#slides").slidesjs({
+            width: width,
+            height: height,
+
+            pagination: {
+                active: false
+            },
+
+            navigation: {
+                active: false
+            }
+        });
+    });
+</script>
