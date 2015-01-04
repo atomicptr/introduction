@@ -2,95 +2,35 @@
 <title>introduction</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="lib/fullPage/jquery.fullPage.css" />
 <style>
     html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    #slides {
-        display: none;
-    }
-
-    .slidesjs-pagination {
-        list-style-type: none;
-        float: left;
-
+        marign: 0;
         padding: 0;
-        margin: 0;
-
-        position: absolute;
-
-        bottom: 5%;
-
-        z-index: 10;
-    }
-
-    .slidesjs-pagination-item {
-        display: inline;
-        padding-left: 5px;
-        padding-right: 5px;
     }
 </style>
 
-<div class="content">
-    <div id="slides">
-        <img src="http://placehold.it/1080x1920">
-        <div>
-            <h1> Testa</h1>
-        </div>
-        <img src="http://placebear.com/1080/1920">
-    </div>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/fullPage/jquery.easings.min.js"></script>
+<script src="lib/fullPage/jquery.slimscroll.min.js"></script>
+<script src="lib/fullPage/jquery.fullPage.min.js"></script>
+<script src="js/introduction.js"></script>
+
+<div id="intro"></div>
+
+<div id="page1" style="background-image: url('http://placebear.com/1280/800');">
 </div>
 
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.slides.min.js"></script>
+<div id="page2" style="background-image: url('http://placehold.it/1280x800');">
+</div>
+
 <script>
-    function set_bullet(num) {
-        $(".fa-circle").addClass("fa-circle-o").removeClass("fa-circle");
-
-        $("#nav-" + num).removeClass("fa-circle-o").addClass("fa-circle");
-    }
-
-    function init_intro() {
-        var width = $(window).width();
-        var height = $(window).height();
-
-        $("#slides").slidesjs({
-            width: width,
-            height: height,
-
-            pagination: {
-                active: true
-            },
-
-            navigation: {
-                active: false
-            },
-
-            callback: {
-                loaded: function(number) {
-                    $('.slidesjs-pagination').css("left",
-                        (width / 2 - $('.slidesjs-pagination').width() / 2) + "px");
-
-                    $('.slidesjs-pagination-item').each(function(index, element) {
-                        $(this).html("<i id='" + "nav-" + (index + 1) + "' class='fa fa-circle-o'></i>");
-                    });
-
-                    set_bullet(number);
-                },
-
-                complete: function(number) {
-                    set_bullet(number);
-                }
-            }
-        });
-    }
-
     $(document).ready(function() {
-        init_intro();
+        var intro = Introduction.create("#intro");
+
+        intro.addPage("#page1");
+        intro.addPage("#page2");
+
+        intro.init();
     });
 </script>
