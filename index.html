@@ -1,27 +1,53 @@
 <!doctype html>
 <title>introduction</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="lib/fullPage/jquery.fullPage.css" />
 <style>
     html, body {
         marign: 0;
         padding: 0;
+
+        font-family: Helvetica;
+        color: white;
+        text-align: center;
+    }
+
+    #page1 {
+        background-color: #C03D0F;
+    }
+
+    #page2 {
+        background-color: #0099FF;
+        font-size: 300px;
+    }
+
+    #page3 {
+        background-color: #1bbc9b;
+        font-size: 300px;
     }
 </style>
 
 <script src="lib/jquery.min.js"></script>
-<script src="lib/fullPage/jquery.easings.min.js"></script>
-<script src="lib/fullPage/jquery.slimscroll.min.js"></script>
 <script src="lib/fullPage/jquery.fullPage.min.js"></script>
 <script src="js/introduction.js"></script>
 
 <div id="intro"></div>
 
-<div id="page1" style="background-image: url('http://placebear.com/1280/800');">
+<div id="page1">
+    <h1>Hello and welcome to <u>Introduction</u>!</h1>
+    <p>
+        Creating Intro pages was never this easy!
+    </p>
 </div>
 
-<div id="page2" style="background-image: url('http://placehold.it/1280x800');">
+<div id="page2">
+    <i class="fa fa-thumbs-up"></i>
+</div>
+
+<div id="page3">
+    <i class="fa fa-smile-o"></i>
 </div>
 
 <script>
@@ -30,6 +56,7 @@
 
         intro.addPage("#page1");
         intro.addPage("#page2");
+        intro.addPage("#page3");
 
         intro.init();
     });
